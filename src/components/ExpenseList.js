@@ -1,11 +1,17 @@
 import React from "react";
 import axios from "axios";
 
+const API_BASE_URL = "https://expense-tracker-backend-282s.onrender.com";
+
 function ExpenseList({ expenses, onExpenseDeleted }) {
   const deleteExpense = (id) => {
     axios
-      .delete(`http://localhost:8080/api/expenses/${id}`)
-      .then(onExpenseDeleted);
+      .delete(`${API_BASE_URL}/api/expenses/${id}`)
+      .then(onExpenseDeleted)
+      .catch((err) => {
+        console.error("Error deleting expense:", err);
+        alert("Error deleting expense");
+      });
   };
 
   return (
