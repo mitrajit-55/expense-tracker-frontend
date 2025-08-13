@@ -1,0 +1,30 @@
+
+
+.footer {
+  background-color: #0d5a8ab5;
+  color: #ecf0f1;
+  text-align: center;
+  padding: 14px 6px;
+  width: 100vw;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  box-sizing: border-box;
+  font-size: 0.95em;
+  height: auto;
+  z-index: 100;
+  transition: font-size 0.2s;
+}
+.footer h4 {
+  margin: 0;
+  font-weight: 400;
+  font-size: inherit;
+}
+
+/* Adjust size and layout for tiny screens */
+@media (max-width: 600px) {
+  .footer {
+    font-size: 0.83em;
+    padding: 10px 2px;
+  }
+}
