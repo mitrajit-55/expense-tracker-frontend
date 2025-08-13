@@ -9,19 +9,21 @@ import "./App.css";
 function App() {
   const [expenses, setExpenses] = useState([]);
 
-  // Only one fetch function, shared by both add and delete
+  // Backend API base URL (Render deployment)
+  const API_BASE_URL = "https://expense-tracker-backend-282s.onrender.com";
+
+  // Fetch expenses from the backend
   const fetchExpenses = () => {
     axios
-      .get("http://localhost:8080/api/expenses")
+      .get(`${API_BASE_URL}/api/expenses`)
       .then((res) => setExpenses(res.data))
-      .catch((err) => console.error(err));
+      .catch((err) => console.error("Error fetching expenses:", err));
   };
 
   useEffect(() => {
     fetchExpenses();
   }, []);
 
-  // pass both the expenses and fetch function
   return (
     <div className="app-container">
       <Navbar />
