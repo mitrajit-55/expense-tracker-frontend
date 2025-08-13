@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+const API_BASE_URL = "https://expense-tracker-backend-282s.onrender.com";
+
 function AddExpense({ onExpenseAdded }) {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
@@ -14,19 +16,17 @@ function AddExpense({ onExpenseAdded }) {
 
     setLoading(true);
 
-    axios.post("http://localhost:8080/api/expenses", {
+    axios.post(`${API_BASE_URL}/api/expenses`, {
       title: title.trim(),
       amount: Number(amount),
     })
     .then(() => {
-      // Notify parent to fetch updated expenses
       onExpenseAdded();
-      // Clear inputs here AFTER notifying parent
       setTitle("");
       setAmount("");
     })
     .catch((err) => {
-      console.error(err);
+      console.error("Error saving expense:", err);
       alert("Error saving expense");
     })
     .finally(() => {
